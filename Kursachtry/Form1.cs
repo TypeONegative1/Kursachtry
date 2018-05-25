@@ -67,8 +67,8 @@ namespace Kursachtry
 
         private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
-            if (e.KeyChar <= 47 || e.KeyChar >= 58)
+           char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8)
             {
                 e.Handled = true;
             }
@@ -83,7 +83,7 @@ namespace Kursachtry
         {
             WinRate.MaxLength = 3;
             char number = e.KeyChar;
-             if (e.KeyChar <= 47 || e.KeyChar >= 58 && e.KeyChar!=(char)8)
+            if (!Char.IsDigit(number) && number != 8)
             {
                 e.Handled = true;
             }
