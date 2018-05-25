@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace samproject
+namespace Kursachtry
 {
     /// <summary>
     /// Информация о игроке

@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 
-namespace samproject
+namespace Kursachtry
 {
-    public static class HelperMine
+    public static class Serialization
     {
         private static readonly XmlSerializer Xs = new XmlSerializer(typeof(SmthAboutPlayer));
         public static void WriteToFile(string fileName, SmthAboutPlayer data)
@@ -20,6 +20,10 @@ namespace samproject
             {
                 return (SmthAboutPlayer)Xs.Deserialize(fileStream);
             }
+        }
+        public static SmthAboutPlayer LoadFromStream(Stream file)
+        {
+            return (SmthAboutPlayer)Xs.Deserialize(file);
         }
     }
 }

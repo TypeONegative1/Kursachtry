@@ -50,8 +50,6 @@ namespace Kursachtry
         private void button1_Click(object sender, EventArgs e)
         {
             Hide();
-            Form2 form2 = new Form2();
-            form2.ShowDialog();
             Close();
         }
 
@@ -68,7 +66,7 @@ namespace Kursachtry
         private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8)
+            if (e.KeyChar <= 47 || e.KeyChar >= 58)
             {
                 e.Handled = true;
             }
