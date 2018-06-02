@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kursachtry;
 
 namespace GoHome.Web.Controllers
 {
     public class UploadController : Controller
     {
-        // GET: Upload
         public ActionResult Index()
         {
             return View();
@@ -19,8 +19,8 @@ namespace GoHome.Web.Controllers
         {
             if (file != null && file.ContentLength > 0)
             {
-                var dto = Seria.LoadFromStream(file.InputStream);
-                return View(dto);
+                var star = Serialization.LoadFromStream(file.InputStream);
+                return View(star);
             }
 
             return RedirectToAction("Index");

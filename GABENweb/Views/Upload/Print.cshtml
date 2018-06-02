@@ -1,0 +1,20 @@
+﻿@model ClassLibrary.SmthAboutPlayer
+
+@{
+    ViewBag.Title = "Print";
+}
+
+<h2>Полное имя игрока: @Model.FullName</h2>
+<div>Никнейм игрока: @Model.NickName</div>
+<div>ID игрока: @Model.PlayerID</div>
+<div>Любимый(лучший) игрок: @Model.SignatureHero</div>
+<div>Процент побед/поражений (винрейт): @Model.WinRate</div>
+<div>
+    Позиция в игре:
+    @foreach (var role in Model.PrimaryRole)
+    {
+        <div>@role</div>
+    }
+</div>
+<div>Уровень игрока(рейтинг):@Model.SoloRating </div>
+<div>Количество звёзд в рейтинге:@Model.RateStars</div>
