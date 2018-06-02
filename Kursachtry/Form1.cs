@@ -15,54 +15,15 @@ namespace Kursachtry
         public Form1()
         {
             InitializeComponent();
+
+            Array currArray = Enum.GetValues(typeof(Currency));
+            foreach (Currency elem in currArray)
+                PrimaryRole.Items.Add(elem);
+
+            Array rateArray = Enum.GetValues(typeof(Rating));
+            foreach (Rating elem in currArray)
+                PrimaryRole.Items.Add(elem);
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e) //full name
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)//nickname
-        {
-            
-        }
-
-        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)//primaryrole
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Hide();
-            Close();
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
@@ -70,11 +31,6 @@ namespace Kursachtry
             {
                 e.Handled = true;
             }
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
@@ -87,10 +43,67 @@ namespace Kursachtry
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private void Open_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog() { Filter = "Анкеты игрока|*.gaben" };
+            var result = ofd.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                var dto = Serialization.LoadFromFile(ofd.FileName);
+                SetModelToUI(dto);
+            }
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            var sfd = new SaveFileDialog() { Filter = "Анкеты игрока|*.gaben" };
+            var result = sfd.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                var dto = GetModelFromUI();
+                Serialization.WriteToFile(sfd.FileName, dto);
+            }
+        }
+
+        SmthAboutPlayer GetModelFromUI()
+        {
+            var player = new SmthAboutPlayer();
+            player.FullName = FullName.Text;
+            player.NickName = NickName.Text;
+            player.PlayerID = double.Parse(PlayerID.Text);
+            player.SignatureHero = SignatureHero.Text;
+            player.WinRate = double.Parse(WinRate.Text);
+            player.PrimaryRole = new List<Currency>();
+            foreach (Currency elem in PrimaryRole.CheckedItems)
+                player.PrimaryRole.Add(elem);
+            player.SoloRating = (Rating)RatingSolo.SelectedIndex;
+            player.RateStars = RateStars.SelectedIndex;
+            return player;
+        }
+        private void SetModelToUI(SmthAboutPlayer player)
+        {
+            FullName.Text = player.FullName;
+            NickName.Text = player.NickName;
+            PlayerID.Text = player.PlayerID.ToString();
+            SignatureHero.Text = player.SignatureHero;
+            WinRate.Text=player.WinRate.ToString();
+            for(int i =0; i< 5; i++)
+                PrimaryRole.SetItemChecked(i, false);
+            foreach (int elem in player.PrimaryRole)
+                PrimaryRole.SetItemChecked(elem, true);
+            RatingSolo.SelectedIndex = (int)player.SoloRating;
+            RateStars.SelectedIndex = player.RateStars;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
     }
 }
-a
+

@@ -32,7 +32,6 @@
             this.FullName = new System.Windows.Forms.TextBox();
             this.NickName = new System.Windows.Forms.TextBox();
             this.PlayerID = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,6 +46,8 @@
             this.RateStars = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PrimaryRole = new System.Windows.Forms.CheckedListBox();
+            this.Open = new System.Windows.Forms.Button();
+            this.Save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,6 @@
             this.FullName.Name = "FullName";
             this.FullName.Size = new System.Drawing.Size(262, 20);
             this.FullName.TabIndex = 0;
-            this.FullName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // NickName
             // 
@@ -64,7 +64,6 @@
             this.NickName.Name = "NickName";
             this.NickName.Size = new System.Drawing.Size(262, 20);
             this.NickName.TabIndex = 1;
-            this.NickName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // PlayerID
             // 
@@ -73,16 +72,6 @@
             this.PlayerID.Size = new System.Drawing.Size(262, 20);
             this.PlayerID.TabIndex = 4;
             this.PlayerID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(184, 586);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 36);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Continue";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -111,7 +100,6 @@
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Rating (solo)";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label5
             // 
@@ -144,7 +132,6 @@
             this.WinRate.Name = "WinRate";
             this.WinRate.Size = new System.Drawing.Size(262, 20);
             this.WinRate.TabIndex = 14;
-            this.WinRate.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             this.WinRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox8_KeyPress);
             // 
             // label7
@@ -164,7 +151,6 @@
             this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 16;
             this.label8.Text = "WinRate(%)";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label4
             // 
@@ -204,38 +190,52 @@
             this.RateStars.Name = "RateStars";
             this.RateStars.Size = new System.Drawing.Size(262, 21);
             this.RateStars.TabIndex = 21;
-            this.RateStars.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(26, 471);
+            this.pictureBox1.Location = new System.Drawing.Point(22, 659);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(444, 98);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // PrimaryRole
             // 
             this.PrimaryRole.FormattingEnabled = true;
-            this.PrimaryRole.Items.AddRange(new object[] {
-            "MidLane",
-            "HardLane",
-            "Roam",
-            "Support",
-            "Carry"});
             this.PrimaryRole.Location = new System.Drawing.Point(145, 282);
             this.PrimaryRole.Name = "PrimaryRole";
             this.PrimaryRole.Size = new System.Drawing.Size(262, 79);
             this.PrimaryRole.TabIndex = 17;
             // 
+            // Open
+            // 
+            this.Open.Location = new System.Drawing.Point(263, 468);
+            this.Open.Name = "Open";
+            this.Open.Size = new System.Drawing.Size(144, 32);
+            this.Open.TabIndex = 24;
+            this.Open.Text = "Open";
+            this.Open.UseVisualStyleBackColor = true;
+            this.Open.Click += new System.EventHandler(this.Open_Click);
+            // 
+            // Save
+            // 
+            this.Save.Location = new System.Drawing.Point(62, 468);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(144, 32);
+            this.Save.TabIndex = 25;
+            this.Save.Text = "Save";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 628);
+            this.ClientSize = new System.Drawing.Size(573, 754);
+            this.Controls.Add(this.Save);
+            this.Controls.Add(this.Open);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.RateStars);
             this.Controls.Add(this.RatingSolo);
@@ -250,7 +250,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.PlayerID);
             this.Controls.Add(this.NickName);
             this.Controls.Add(this.FullName);
@@ -272,7 +271,6 @@
         private System.Windows.Forms.TextBox FullName;
         private System.Windows.Forms.TextBox NickName;
         private System.Windows.Forms.TextBox PlayerID;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -287,6 +285,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.ComboBox RateStars;
         private System.Windows.Forms.CheckedListBox PrimaryRole;
+        private System.Windows.Forms.Button Open;
+        private System.Windows.Forms.Button Save;
     }
 }
 

@@ -18,33 +18,28 @@ namespace Kursachtry
         /// </summary>
         public string NickName { get; set; }
         /// <summary>
-        /// SoloMMR
-        public double SoloRank { get; set; }
-        /// <summary>
-        // PartyMMR
-        public double PartyRank { get; set; }
-        /// <summary>
         //idplayer
         public double PlayerID { get; set; }
         /// <summary>
-        /// PositionInGame
-        public Currency PrimaryRole { get; set; }
-        /// <summary>
-        //MaxSolo
-        public double MaxSoloRank { get; set; }
-        /// <summary>
         /// ur best hero
-        public string SigranuteHero { get; set; }
+        public string SignatureHero { get; set; }
         /// <summary>
         /// Win/Lose Ratio
         public double WinRate { get; set; }
         /// <summary>
+        /// PositionInGame
+        public List<Currency> PrimaryRole { get; set; }
+        /// <summary>
+        /// SoloMMR
+        public Rating SoloRating { get; set; }
+        /// <summary>
+        //Stars in solo rank
+        public int RateStars { get; set; }
+        /// <summary>
         /// 
         public SmthAboutPlayer()
         {
-            PlayerID = 0;
-            FullName = "";
-            NickName = "";
+
 
         }
     }
@@ -55,13 +50,21 @@ namespace Kursachtry
     }
     public enum Currency
     {
-        Support,
-        Carry,
-        HardLane,
         MidLane,
-        Roam
+        HardLane,
+        Roam,
+        Support,
+        Carry
     }
-
-
+    public enum Rating
+    {
+        Herald,
+        Guardian,
+        Crusader,
+        Archon,
+        Legend,
+        Ancient,
+        Divine
+    }
 }
 
