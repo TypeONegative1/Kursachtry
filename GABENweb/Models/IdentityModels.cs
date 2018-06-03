@@ -3,6 +3,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using GABENweb.Models;
+using GABENweb.Migration;
 
 namespace GABENweb.Models
 {
@@ -23,11 +25,15 @@ namespace GABENweb.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<GABENweb.Models.DbPlayer> DbPlayers { get; set; }
+        public System.Data.Entity.DbSet<GABENweb.Models.DbCurrency> DbCurrencies { get; set; }
     }
 }

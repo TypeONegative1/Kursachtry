@@ -1,0 +1,80 @@
+﻿@model GABENweb.Models.DbPlayer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DbPlayer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SignatureHero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignatureHero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WinRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WinRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoloRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoloRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RateStars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RateStars)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
