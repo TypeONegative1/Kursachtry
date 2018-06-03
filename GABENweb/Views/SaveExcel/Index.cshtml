@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    @using (Html.BeginForm("Download", "SaveExcel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type = "submit" value = "Save" /> @ViewBag.DownloadStatus
+    }
+
+</div>
