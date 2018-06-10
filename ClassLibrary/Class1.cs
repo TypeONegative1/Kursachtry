@@ -40,11 +40,6 @@ namespace ClassLibrary
         public int RateStars { get; set; }
         /// <summary>
         /// 
-        public SmthAboutPlayer()
-        {
-
-
-        }
     }
     public class ActivitiesClass //отдельная база
     {
